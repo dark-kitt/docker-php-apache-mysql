@@ -1,0 +1,32 @@
+# Run => docker compose watch
+version: "3.9"
+services:
+  webserver:
+    container_name: wp-webserver
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 80:80
+    develop:
+      watch:
+        - action: rebuild
+          path: ./web
+          target: /var/www/html
+          ignore:
+            - node_modules/
+    depends_on:
+      - mysql-db
+    environment:
+      XDEBUG_CONFIG: remote_host=host.docker.internal
+
+  mysql-db:
+    container_name: wp-mysql
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: ro_password
+      MYSQL_DATABASE: db_test
+      MYSQL_USER: db_user
+      MYSQL_PASSWORD: db_password
+    ports:
+      - "3306:3306"
