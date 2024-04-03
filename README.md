@@ -1,11 +1,9 @@
-# Docker PHP:8.2 Apache MySQL
+# Docker PHP:8.2 Apache, MySQL and Xdebug
 A tiny docker setup with PHP:8.2-Apache, MySQL and Xdebug
-
-This setup **`rebuilds`** the container on each file change. If you don't need it, just edit the `watch` section inside the compose.yml file.
 
 ### start container
 ```shell
-docker composer watch
+docker composer up
 ```
 
 ### example Apache config

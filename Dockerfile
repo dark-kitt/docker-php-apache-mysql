@@ -2,14 +2,10 @@
 FROM php:8.2-apache
 # Install necessary packages
 RUN apt-get update && apt-get install -y \
-    vim \
-    iputils-ping
+  vim \
+  iputils-ping
 # Install any extensions you need
 RUN docker-php-ext-install mysqli pdo pdo_mysql
-# Get the Xdebug extension
-RUN pecl install xdebug \
-#    # Enable the installed Xdebug
-    && docker-php-ext-enable xdebug
 # Set the working directory to /var/www/html
 WORKDIR /var/www/html
 # --- APACHE | set up ---
@@ -28,5 +24,9 @@ RUN a2ensite vhosts.conf
 # NOTE: https://stackoverflow.com/questions/48868357/docker-php-apache-container-set-the-servername-directive-globally
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
+# Get the Xdebug extension
+RUN pecl install xdebug \
+# Enable the installed Xdebug
+  && docker-php-ext-enable xdebug
 # Describe which ports your application is listening on
 EXPOSE 80
