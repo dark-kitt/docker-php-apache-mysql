@@ -1,12 +1,26 @@
 # Docker PHP:8.2 Apache, MySQL and Xdebug
-A tiny docker setup with PHP:8.2-Apache, MySQL and Xdebug
+Add the following line to your hosts file on your machine to enter the access examples.
+```shell
+# docker example
+127.0.0.1       example.kitt api.example.kitt
+```
 
-### start container
+**start container**
 ```shell
 docker composer up
 ```
 
-### example Apache config
+**Check the access for root directory:**
+```shell
+http://example.kitt
+```
+
+**Check access for api directory:**
+```shell
+http://api.example.kitt
+```
+
+**EXAMPLE: Apache config**
 ```apacheconf
 # Tiny example vhosts config file
 <VirtualHost *:80>

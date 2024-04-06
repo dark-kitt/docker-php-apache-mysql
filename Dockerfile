@@ -8,6 +8,8 @@ RUN apt-get update && apt-get install -y \
 RUN docker-php-ext-install mysqli pdo pdo_mysql
 # Set the working directory to /var/www/html
 WORKDIR /var/www/html
+# Copy the required source code in the container at /var/www/html
+COPY --chown=www-data:www-data --chmod=755 ./api ./api
 # --- APACHE | set up ---
 # Enable APACHE modules
 RUN a2enmod rewrite && a2enmod ssl && a2enmod socache_shmcb
