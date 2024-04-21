@@ -1,4 +1,3 @@
-# Run => docker compose watch
 version: "3.9"
 services:
   webserver:
