@@ -1,5 +1,6 @@
 # Docker PHP:8.2 Apache, MySQL and Xdebug
-Add the following line to your hosts file on your machine to enter the access examples.
+
+Add the following line to your hosts file (`/etc/hosts`) on your machine to resolve the custom domain.
 ```shell
 # docker example
 127.0.0.1       example.kitt api.example.kitt
